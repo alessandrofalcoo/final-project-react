@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom"
 import Games from "./pages/Games"
 import SingleGame from "./pages/SingleGame"
-import FilterGames from "./pages/FilterGames"
+import FilterGames from "./components/FilterGames"
 import { Link } from "react-router-dom"
 import { Routes, Route } from "react-router-dom"
 
