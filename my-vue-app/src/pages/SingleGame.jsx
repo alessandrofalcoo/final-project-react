@@ -35,12 +35,15 @@ export default function SingleGame() {
     return (
 
         <>
-            <main>
-                <div className="container align-center">
-                    <GameCard game={game} />
-                    <Link to="/games"><button className="btn btn-outline-dark my-2">Torna alla lista</button></Link>
-                </div>
-            </main>
+            <div className="page-container d-flex flex-column min-vh-100">
+                <main className="flex-grow-1">
+                    <div className="container align-center">
+                        <GameCard game={game} />
+                        <Link to="/games"><button className="btn btn-outline-dark my-2">Torna alla lista</button></Link>
+                    </div>
+                </main>
+
+            </div>
         </>
     )
 }

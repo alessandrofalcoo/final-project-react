@@ -6,7 +6,7 @@ export default function GameCard({ game }) {
     }
     return (
         <>
-            <div className="game-card d-flex">
+            <div className="game-card">
                 <img
                     src={game.url}
                     alt={game.title}
@@ -18,6 +18,7 @@ export default function GameCard({ game }) {
                     <Link to={`/games/${game.id}`}><button className="game-card-btn btn btn-outline-dark">Discover more</button></Link>
                 </div>
             </div>
+
         </>
     )
 }

@@ -25,6 +25,7 @@ export default function FilterGames({ setGames }) {
         console.log("Filtri: ", { genreId, devId });
         let query = [];
         if (genreId) query.push(`genreId=${genreId}`)
+
         if (devId) query.push(`devId=${devId}`)
         if (genreId && devId) query.push(`genreId=${genreId}&devId=${devId}`);
         query.push("page=0&size=10");
@@ -46,39 +47,42 @@ export default function FilterGames({ setGames }) {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="my-3 d-flex gap-3 align-items-end justify-content-center">
-                <div className="form-group text-center">
-                    <label htmlFor="genreSelect">
-                        <select
-                            className="form-select"
-                            id="genreSelect"
-                            value={genreId}
-                            onChange={(e) => setGenreId(e.target.value)}>
-                            <option value="">No genre selected</option>
-                            {genres.map((genre) => (
-                                <option key={genre.id} value={genre.id}>{genre.name}</option>
-                            ))}
-                        </select>
-                    </label>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="devSelect">
-                        <select
-                            className="form-select"
-                            id="devSelect"
-                            value={devId}
-                            onChange={(e) => setDevId(e.target.value)}>
-                            <option value="">No developer selected</option>
-                            {devs.map((dev) => (
-                                <option key={dev.id} value={dev.id}>{dev.name}</option>
-                            ))}
-                        </select>
-                    </label>
-                </div>
-                <button type="submit" className="btn btn-outline-dark">
-                    Filter
-                </button>
-            </form>
+            <main className="container page-container">
+                <form onSubmit={handleSubmit} className="my-3 d-flex gap-3 align-items-end justify-content-center">
+                    <div className="form-group text-center">
+                        <label htmlFor="genreSelect">
+                            <select
+                                className="form-select"
+                                id="genreSelect"
+                                value={genreId}
+                                onChange={(e) => setGenreId(e.target.value)}>
+                                <option value="">No genre selected</option>
+                                {genres.map((genre) => (
+                                    <option key={genre.id} value={genre.id}>{genre.name}</option>
+                                ))}
+                            </select>
+                        </label>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="devSelect">
+                            <select
+                                className="form-select"
+                                id="devSelect"
+                                value={devId}
+                                onChange={(e) => setDevId(e.target.value)}>
+                                <option value="">No developer selected</option>
+                                {devs.map((dev) => (
+                                    <option key={dev.id} value={dev.id}>{dev.name}</option>
+                                ))}
+                            </select>
+                        </label>
+                    </div>
+                    <button type="submit" className="btn btn-outline-dark">
+                        Filter
+                    </button>
+                </form>
+
+            </main>
         </>
     )
 }

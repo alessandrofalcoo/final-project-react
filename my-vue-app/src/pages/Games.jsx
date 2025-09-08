@@ -11,7 +11,7 @@ export default function Games() {
     const API_URL = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
-        fetch(`${API_URL}/filters?page=0&size=10`)
+        fetch(`${API_URL}/filters?page=0&size=6`)
             .then((res) => res.json())
             .then((data) => {
                 const content = data.content || [];
@@ -26,25 +26,44 @@ export default function Games() {
 
     return (
         <>
-            <main className="container">
-                <div className="container text-center">
-                    <h1>Lista dei giochi</h1>
-                    <FilterGames setGames={setGames} setError={setError} />
+            <div className="page-container d-flex flex-column min-vh-100">
+                <main className="flex-grow-1">
+                    <div className="container text-center">
+                        <h1>Lista dei giochi</h1>
+                        <FilterGames setGames={setGames} setError={setError} />
 
-                    {error && <p className="text-red-500">{error}</p>}
+                        {error && <p className="text-red-500">{error}</p>}
 
-                    {games.length > 0 && (
-                        <ul className="gamesList">
-                            {games.map((game) => (
-                                <li className="games my-3" key={game.id}>
-                                    <GameCard game={game}></GameCard>
+                        {games.length === 0 ? (
+                            <div className="text-center mt-5">
+                                <h2>404 - Nessun gioco trovato</h2>
+                                <p>Non ci sono giochi associati a questo genere.</p>
+                            </div>
+                        ) : (
+                            <>
+                                <div className="row mb-4 d-flex justify-content-around">
+                                    {games.slice(0, 3).map((game) => (
+                                        <div className="col-md-2 col-sm-4 col-6 mb-3" key={game.id}>
+                                            <GameCard game={game} />
+                                        </div>
+                                    ))}
+                                </div>
 
-                                </li>
-                            ))}
-                        </ul>
-                    )}
-                </div>
-            </main>
+                                <div className="row d-flex justify-content-around">
+                                    {games.slice(3, 6).map((game) => (
+                                        <div className="col-md-2 col-sm-4 col-6 mb-3" key={game.id}>
+                                            <GameCard game={game} />
+                                        </div>
+                                    ))}
+                                </div>
+                            </>
+
+                        )
+                        }
+                    </div>
+                </main >
+
+            </div>
 
         </>
     )
