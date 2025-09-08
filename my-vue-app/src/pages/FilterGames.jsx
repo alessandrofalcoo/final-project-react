@@ -46,8 +46,8 @@ export default function FilterGames({ setGames }) {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="mb-3 d-flex gap-3 align-items-end">
-                <div className="form-group">
+            <form onSubmit={handleSubmit} className="my-3 d-flex gap-3 align-items-end justify-content-center">
+                <div className="form-group text-center">
                     <label htmlFor="genreSelect">
                         <select
                             className="form-select"
@@ -75,7 +75,7 @@ export default function FilterGames({ setGames }) {
                         </select>
                     </label>
                 </div>
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-outline-dark">
                     Filter
                 </button>
             </form>

@@ -1,5 +1,50 @@
+@import 'bootstrap';
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.gamesList {
+  list-style: none;
+
+  .games {
+    a {
+      color: black;
+      text-decoration: none;
+    }
+
+  }
+
+}
+
+img {
+  max-width: 200px;
+}
+
+
+.game-card-body {
+  padding: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+
+  .game-card-btn {
+    align-self: center;
+    max-width: fit-content;
+  }
+}
+
+
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
 }

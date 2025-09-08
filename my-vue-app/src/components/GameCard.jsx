@@ -1,0 +1,23 @@
+import { Link } from "react-router-dom"
+
+export default function GameCard({ game }) {
+    if (!game) {
+        return null;
+    }
+    return (
+        <>
+            <div className="game-card d-flex">
+                <img
+                    src={game.url}
+                    alt={game.title}
+                    className="game-card-img"
+                />
+
+                <div className="game-card-body">
+                    <h5 className="game-card-title">{game.title}</h5>
+                    <Link to={`/games/${game.id}`}><button className="game-card-btn btn btn-outline-dark">Discover more</button></Link>
+                </div>
+            </div>
+        </>
+    )
+}

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import GameCard from "../components/GameCard";
+
 
 export default function SingleGame() {
     const { id } = useParams();
@@ -32,16 +34,13 @@ export default function SingleGame() {
     if (!game) return <p>Gioco non trovato</p>;
     return (
 
-        <main>
-            <div>
-                <h1>Show</h1>
-                <h2>{game.title}</h2>
-                <h3>{game.dev.name}</h3>
-                <h4>{game.genre.name}</h4>
-                <h5>{game.price}€</h5>
-                <Link to="/">Torna alla lista</Link>
-            </div>
-
-        </main>
+        <>
+            <main>
+                <div className="container align-center">
+                    <GameCard game={game} />
+                    <Link to="/games"><button className="btn btn-outline-dark my-2">Torna alla lista</button></Link>
+                </div>
+            </main>
+        </>
     )
 }
