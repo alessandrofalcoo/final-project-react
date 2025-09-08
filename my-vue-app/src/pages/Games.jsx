@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
 import FilterGames from "./FilterGames";
 import GameCard from "../components/GameCard";
 
@@ -7,22 +6,25 @@ import GameCard from "../components/GameCard";
 export default function Games() {
     const [games, setGames] = useState([]);
     const [error, setError] = useState("");
+    const [page, setPage] = useState(0);
+    const [totalPages, setTotalPages] = useState(0);
 
     const API_URL = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
-        fetch(`${API_URL}/filters?page=0&size=6`)
+        fetch(`${API_URL}/filters?page=${page}&size=10`)
             .then((res) => res.json())
             .then((data) => {
                 const content = data.content || [];
                 setGames(content);
+                setTotalPages(data.totalPages)
                 setError(content.length === 0 ? "Nessun gioco trovato." : "");
             })
             .catch((err) => {
                 console.error("Errore fetch:", err);
                 setError("Errore durante il caricamento dei giochi.");
             });
-    }, [API_URL]);
+    }, [API_URL, page]);
 
     return (
         <>
@@ -42,7 +44,7 @@ export default function Games() {
                         ) : (
                             <>
                                 <div className="row mb-4 d-flex justify-content-around">
-                                    {games.slice(0, 3).map((game) => (
+                                    {games.slice(0, 4).map((game) => (
                                         <div className="col-md-2 col-sm-4 col-6 mb-3" key={game.id}>
                                             <GameCard game={game} />
                                         </div>
@@ -50,11 +52,28 @@ export default function Games() {
                                 </div>
 
                                 <div className="row d-flex justify-content-around">
-                                    {games.slice(3, 6).map((game) => (
+                                    {games.slice(4, 8).map((game) => (
                                         <div className="col-md-2 col-sm-4 col-6 mb-3" key={game.id}>
                                             <GameCard game={game} />
                                         </div>
                                     ))}
+                                </div>
+                                <div className="d-flex justify-content-center my-4 gap-2">
+                                    <button
+                                        className="btn btn-outline-dark"
+                                        onClick={() => setPage((prev) => (prev === 0 ? totalPages - 1 : prev - 1))}
+                                    >
+                                        &laquo; Prev
+                                    </button>
+
+                                    <span className="align-self-center">Pagina {page + 1} di {totalPages}</span>
+
+                                    <button
+                                        className="btn btn-outline-dark"
+                                        onClick={() => setPage((prev) => (prev === totalPages - 1 ? 0 : prev + 1))}
+                                    >
+                                        Next &raquo;
+                                    </button>
                                 </div>
                             </>
 

@@ -22,10 +22,8 @@ export default function FilterGames({ setGames }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         setError("");
-        console.log("Filtri: ", { genreId, devId });
         let query = [];
         if (genreId) query.push(`genreId=${genreId}`)
-
         if (devId) query.push(`devId=${devId}`)
         if (genreId && devId) query.push(`genreId=${genreId}&devId=${devId}`);
         query.push("page=0&size=10");
