@@ -15,7 +15,7 @@ export default function GameCard({ game }) {
 
                 <div className="game-card-body">
                     <h5 className="game-card-title">{game.title}</h5>
-                    <Link to={`/games/${game.id}`}><button className="game-card-btn btn btn-outline-dark">Discover more</button></Link>
+                    <Link to={`/games/${game.id}`}><button className="game-card-btn btn">Discover more</button></Link>
                 </div>
             </div>
 

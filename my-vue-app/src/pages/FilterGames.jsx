@@ -75,7 +75,7 @@ export default function FilterGames({ setGames }) {
                             </select>
                         </label>
                     </div>
-                    <button type="submit" className="btn btn-outline-dark">
+                    <button type="submit" className="btn">
                         Filter
                     </button>
                 </form>

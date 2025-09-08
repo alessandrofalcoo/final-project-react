@@ -39,7 +39,7 @@ export default function SingleGame() {
                 <main className="flex-grow-1">
                     <div className="container align-center">
                         <GameCard game={game} />
-                        <Link to="/games"><button className="btn btn-outline-dark my-2">Torna alla lista</button></Link>
+                        <Link to="/games"><button className="btn my-2">Torna alla lista</button></Link>
                     </div>
                 </main>
 

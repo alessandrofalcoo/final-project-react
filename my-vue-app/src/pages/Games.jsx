@@ -29,8 +29,8 @@ export default function Games() {
     return (
         <>
             <div className="page-container d-flex flex-column min-vh-100">
-                <main className="flex-grow-1">
-                    <div className="container text-center">
+                <main className="flex-grow-1 container">
+                    <div className="text-center">
                         <h1>Lista dei giochi</h1>
                         <FilterGames setGames={setGames} setError={setError} />
 
@@ -44,7 +44,7 @@ export default function Games() {
                         ) : (
                             <>
                                 <div className="row mb-4 d-flex justify-content-around">
-                                    {games.slice(0, 4).map((game) => (
+                                    {games.slice(0, 3).map((game) => (
                                         <div className="col-md-2 col-sm-4 col-6 mb-3" key={game.id}>
                                             <GameCard game={game} />
                                         </div>
@@ -52,15 +52,15 @@ export default function Games() {
                                 </div>
 
                                 <div className="row d-flex justify-content-around">
-                                    {games.slice(4, 8).map((game) => (
+                                    {games.slice(3, 6).map((game) => (
                                         <div className="col-md-2 col-sm-4 col-6 mb-3" key={game.id}>
                                             <GameCard game={game} />
                                         </div>
                                     ))}
                                 </div>
-                                <div className="d-flex justify-content-center my-4 gap-2">
+                                <div className="d-flex justify-content-center my-3 gap-3">
                                     <button
-                                        className="btn btn-outline-dark"
+                                        className="btn"
                                         onClick={() => setPage((prev) => (prev === 0 ? totalPages - 1 : prev - 1))}
                                     >
                                         &laquo; Prev
@@ -69,14 +69,13 @@ export default function Games() {
                                     <span className="align-self-center">Pagina {page + 1} di {totalPages}</span>
 
                                     <button
-                                        className="btn btn-outline-dark"
+                                        className="btn"
                                         onClick={() => setPage((prev) => (prev === totalPages - 1 ? 0 : prev + 1))}
                                     >
                                         Next &raquo;
                                     </button>
                                 </div>
                             </>
-
                         )
                         }
                     </div>
