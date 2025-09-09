@@ -29,7 +29,7 @@ export default function Games() {
             })
             .catch((err) => {
                 console.error("Errore fetch:", err);
-                setError("Errore durante il caricamento dei giochi.");
+                setError("No game found");
             });
     }, [API_URL, page, searchTitle]);
 
@@ -40,12 +40,9 @@ export default function Games() {
                     <h1>Lista dei giochi</h1>
                     <FilterGames setGames={setGames} setError={setError} />
 
-                    {error && <p className="text-red-500">{error}</p>}
-
-                    {games.length === 0 ? (
+                    {error ? (
                         <div className="text-center mt-5">
-                            <h2>Nessun gioco trovato</h2>
-                            <p>Non ci sono giochi associati a questo genere.</p>
+                            <h2>{error}</h2>
                         </div>
                     ) : (
                         <>
