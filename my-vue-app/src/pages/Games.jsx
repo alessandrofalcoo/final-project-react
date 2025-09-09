@@ -18,9 +18,9 @@ export default function Games() {
         let url = "";
 
         if (searchTitle) {
-            url = `${API_URL}/searchByName?title=${encodeURIComponent(searchTitle)}&page=${page}&size=10`;
+            url = `${API_URL}/searchByName?title=${encodeURIComponent(searchTitle)}&page=${page}&size=6`;
         } else {
-            url = `${API_URL}/filters?page=${page}&size=10`;
+            url = `${API_URL}/filters?page=${page}&size=6`;
         }
 
         fetch(url)

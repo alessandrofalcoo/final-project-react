@@ -26,7 +26,7 @@ export default function FilterGames({ setGames }) {
         if (genreId) query.push(`genreId=${genreId}`)
         if (devId) query.push(`devId=${devId}`)
         if (genreId && devId) query.push(`genreId=${genreId}&devId=${devId}`);
-        query.push("page=0&size=10");
+        query.push("page=0&size=6");
         const queryString = query.length > 0 ? "?" + query.join("&") : "";
 
         fetch(`http://localhost:8080/api/games/filters${queryString}`)
