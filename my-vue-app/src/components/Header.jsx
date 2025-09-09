@@ -17,7 +17,7 @@ export default function Header({ setSearchTitle, setPage, query, setQuery }) {
                         type="text"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
-                        placeholder="Search"
+                        placeholder="Search by name"
                     />
                     <button className="btn px-4" type="submit">Search</button>
                 </form>

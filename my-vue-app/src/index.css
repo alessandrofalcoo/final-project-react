@@ -42,6 +42,51 @@ img {
   box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
 }
 
+/* Header */
+.navbar {
+  background: rgba(15, 15, 15, 0.85);
+  /* sfondo semi-trasparente */
+  border-bottom: 1px solid #3c2f1f;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+  backdrop-filter: blur(6px);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #d4af37;
+  text-shadow: 0 0 6px rgba(212, 175, 55, 0.4);
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #fff;
+}
+
+.navbar form input.form-control {
+  background-color: #0f0f0f;
+  color: #f5f5dc;
+  border: 1px solid #5a3e2b;
+  border-radius: 8px;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  box-shadow: inset 0 0 6px rgba(212, 175, 55, 0.2);
+  transition: all 0.3s ease;
+}
+
+.navbar form input.form-control:focus {
+  outline: none;
+  border-color: #d4af37;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+}
+
+.navbar .btn {
+  padding: 0.5rem 1.5rem;
+}
+
+/* End Header */
+
+
 /* Main */
 main.flex-grow-1 {
   flex: 1;
