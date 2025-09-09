@@ -5,21 +5,24 @@ import SingleGame from "./pages/SingleGame"
 import FilterGames from "./pages/FilterGames"
 import { Routes, Route } from "react-router-dom"
 import DefaultLayout from "./layouts/DefaultLayout"
+import { SearchProvider } from "./contexts/GlobalContext"
 
 function App() {
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route Component={DefaultLayout}>
-          <Route path="/" element={<Home />} />
-          <Route path="/games" element={<Games />} />
-          <Route path="/games/:id" element={<SingleGame />} />
-          <Route path="/games/filters" element={<FilterGames />} />
-        </Route>
+    <SearchProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<DefaultLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/games" element={<Games />} />
+            <Route path="/games/:id" element={<SingleGame />} />
+            <Route path="/games/filters" element={<FilterGames />} />
+          </Route>
 
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </SearchProvider>
   )
 }
 

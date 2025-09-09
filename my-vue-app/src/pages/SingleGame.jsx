@@ -38,7 +38,8 @@ export default function SingleGame() {
             <div className="page-container d-flex flex-column min-vh-100">
                 <main className="flex-grow-1">
                     <div className="container align-center">
-                        <GameCard game={game} />
+                        <h1 className="text-center">{game.title}</h1>
+                        <GameCard className="" game={game} />
                         <Link className="btn-link" to="/games"><button className="btn my-2">Back to the list</button></Link>
                     </div>
                 </main>
