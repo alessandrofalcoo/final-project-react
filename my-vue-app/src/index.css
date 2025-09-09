@@ -98,6 +98,32 @@ img {
 
 /* End Header */
 
+/* Home */
+.home-hero .overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  flex-grow: 1;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.home-hero h1 {
+  font-size: 3rem;
+}
+
+.home-hero p {
+  max-width: 700px;
+}
+
+.home-hero .btn {
+  font-size: 1.2rem;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.home-hero .btn:hover {
+  transform: scale(1.05);
+}
+
+/* End home */
 
 /* Main */
 main.flex-grow-1 {

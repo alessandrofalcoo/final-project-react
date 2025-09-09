@@ -12,7 +12,7 @@ export default function Header() {
 
     return (
         <nav className="d-flex justify-content-between navbar p-4 navbar-expand-sm">
-            <a className="navbar-brand" href="/games">My Games'List</a>
+            <a className="navbar-brand" href="/">Home</a>
             <form onSubmit={handleSubmit} className="d-flex gap-4">
                 <input
                     className="form-control search-bar"

@@ -36,7 +36,7 @@ export default function Games() {
     return (
         <div className="page-container d-flex flex-column min-vh-100">
             <main className="flex-grow-1 container">
-                <div className="text-center">
+                <div className="text-center my-4">
                     <h1>Lista dei giochi</h1>
                     <FilterGames setGames={setGames} setError={setError} />
 
