@@ -1,4 +1,3 @@
-import { useState } from "react"
 
 export default function Header({ setSearchTitle, setPage, query, setQuery }) {
     const handleSubmit = (e) => {
@@ -10,17 +9,17 @@ export default function Header({ setSearchTitle, setPage, query, setQuery }) {
     return (
         <>
 
-            <nav className=" d-flex justify-content-around navbar p-4 navbar-expand-sm navbar-dark bg-dark">
+            <nav className="d-flex justify-content-between navbar p-4 navbar-expand-sm navbar-dark bg-dark">
                 <a className="navbar-brand" href="/games">My Games'List</a>
-                <form onSubmit={handleSubmit} className="d-flex gap-3 my-2 my-lg-0">
+                <form onSubmit={handleSubmit} className="d-flex gap-4">
                     <input
-                        className="form-control me-sm-2"
+                        className="form-control"
                         type="text"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                         placeholder="Search"
                     />
-                    <button className="btn my-sm-0" type="submit">Search</button>
+                    <button className="btn px-4" type="submit">Search</button>
                 </form>
             </nav>
 
