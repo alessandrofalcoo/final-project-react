@@ -9,10 +9,8 @@ export default function GameCard({ game }) {
             <Link className="my-card" to={`/games/${game.id}`}>
                 <div className="game-card">
                     <img src={game.url} alt={game.title} className="game-card-img" />
-
                     <div className="game-card-body">
                         <h5 className="game-card-title">{game.title}</h5>
-                        <button className="game-card-btn btn">Discover more</button>
                     </div>
                 </div>
             </Link >
