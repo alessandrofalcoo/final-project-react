@@ -88,11 +88,6 @@ export default function FilterGames({ setGames }) {
                             Filter
                         </button>
                     </form>
-
-                    {error && (
-                        <h3 className="error-message">{error}</h3>
-                    )}
-
                 </div>
 
             </main>

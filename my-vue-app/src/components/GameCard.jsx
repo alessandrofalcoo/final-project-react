@@ -12,7 +12,7 @@ export default function GameCard({ game }) {
                     <div className="game-card">
                         <img src={game.url} alt={game.title} className="game-card-img" />
                         <div className="game-card-body">
-                            <h5 className="game-card-title">{game.title}</h5>
+                            <h5 className="game-card-title"> {game.title}</h5>
                             <p className="game-card-title">{game.price}€</p>
                             <p className="game-card-title">{game.year}</p>
                         </div>

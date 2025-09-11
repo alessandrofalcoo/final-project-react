@@ -133,6 +133,14 @@ main.flex-grow-1 {
   justify-content: space-between;
 }
 
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem;
+}
+
 /* Select */
 
 select#genreSelect,
@@ -192,8 +200,7 @@ select#devSelect:focus {
 
 /* Game card */
 .game-card {
-  width: 100%;
-  max-width: 400px;
+  width: 400px;
   border-radius: 0.75rem;
   overflow: hidden;
   background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
@@ -238,8 +245,13 @@ select#devSelect:focus {
   font-weight: 700;
   margin-bottom: 10px;
   color: #d4af37;
-  text-shadow: 0 0 4px rgba(212, 175, 55, 0.4);
+  text-shadow: 0 0 4px rgba(212, 175, 55, 0.3);
+  height: 2.5em;
+  line-height: 1.25em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }
+
 
 @keyframes fadeInDark {
   from {
@@ -252,11 +264,6 @@ select#devSelect:focus {
     transform: translateY(0) scale(1);
   }
 }
-
-.game-card {
-  animation: fadeInDark 0.6s ease forwards;
-}
-
 
 .my-card {
   text-decoration: none;

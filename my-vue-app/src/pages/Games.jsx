@@ -40,13 +40,13 @@ export default function Games() {
                     <h1>Lista dei giochi</h1>
                     <FilterGames setGames={setGames} setError={setError} />
 
-                    {error ? (
+                    {games.length === 0 ? (
                         <div className="text-center mt-5">
-                            <h2>{error}</h2>
+                            <h2>{error || "No game found with these filters"}</h2>
                         </div>
                     ) : (
                         <>
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+                            <div className="grid-cards">
                                 {games.map((game) => (
                                     <div key={game.id}>
                                         <GameCard game={game} />
