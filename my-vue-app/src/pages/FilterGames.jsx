@@ -39,7 +39,7 @@ export default function FilterGames({ setGames }) {
         fetch(`http://localhost:8080/api/games/filters${queryString}`)
             .then(res => res.json())
             .then(data => {
-                if (!data.content || data.content.lenght === 0) {
+                if (!data.content || data.content.length === 0) {
                     setGames([]);
                     setError("No game with these filters")
                 } else {
@@ -88,6 +88,10 @@ export default function FilterGames({ setGames }) {
                             Filter
                         </button>
                     </form>
+
+                    {error && (
+                        <h3 className="error-message">{error}</h3>
+                    )}
 
                 </div>
 

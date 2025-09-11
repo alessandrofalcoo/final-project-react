@@ -1,6 +1,7 @@
 import GameCard from "./GameCard";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
+
 export default function Carousel({ games, carouselId }) {
     return (
         <div id={carouselId} className="carousel slide" data-bs-ride="carousel">

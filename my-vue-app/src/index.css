@@ -262,6 +262,23 @@ select#devSelect:focus {
   text-decoration: none;
 }
 
+/* Error message */
+.error-message {
+  color: #d4af37;
+  text-align: center;
+  margin-top: 2rem;
+  padding: 0.75rem 1rem;
+  background: rgba(15, 15, 15, 0.6);
+  border: 1px solid #3c2f1f;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+  text-shadow: 0 0 4px rgba(212, 175, 55, 0.3);
+  backdrop-filter: blur(4px);
+  animation: fadeInDark 0.5s ease forwards;
+}
+
+/* End error message */
+
 /* End Game card */
 
 /* Carousel */
@@ -307,9 +324,6 @@ select#devSelect:focus {
   transform: scale(1.1);
   background-color: rgba(212, 175, 55, 0.5);
 }
-
-
-
 
 /* End carousel */
 
