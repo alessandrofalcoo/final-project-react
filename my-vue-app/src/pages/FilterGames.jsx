@@ -19,6 +19,13 @@ export default function FilterGames({ setGames }) {
             .catch(err => console.error(err));
     }, []);
 
+    const handleReset = () => {
+        if (genres || devs) {
+            setGenreId("")
+            setDevId("")
+        }
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setError("");
@@ -46,6 +53,7 @@ export default function FilterGames({ setGames }) {
     return (
         <>
             <main className="container page-container">
+                <button className="btn" onClick={handleReset}>Reset Filters</button>
                 <form onSubmit={handleSubmit} className="my-3 d-flex gap-3 align-items-end justify-content-center">
                     <div className="form-group text-center">
                         <label htmlFor="genreSelect">
