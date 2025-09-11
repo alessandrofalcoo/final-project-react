@@ -266,9 +266,15 @@ select#devSelect:focus {
 /* Buttons */
 .filter-btn {
   min-width: 120px;
-  display: flex;
   position: relative;
-  bottom: 1.2rem;
+  bottom: 1rem;
+}
+
+.reset-btn {
+  min-width: 120px;
+  position: relative;
+  bottom: 1rem;
+
 }
 
 .btn {

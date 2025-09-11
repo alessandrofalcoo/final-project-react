@@ -53,40 +53,43 @@ export default function FilterGames({ setGames }) {
     return (
         <>
             <main className="container page-container">
-                <button className="btn" onClick={handleReset}>Reset Filters</button>
-                <form onSubmit={handleSubmit} className="my-3 d-flex gap-3 align-items-end justify-content-center">
-                    <div className="form-group text-center">
-                        <label htmlFor="genreSelect">
-                            <select
-                                className="form-select"
-                                id="genreSelect"
-                                value={genreId}
-                                onChange={(e) => setGenreId(e.target.value)}>
-                                <option value="">No genre selected</option>
-                                {genres.map((genre) => (
-                                    <option key={genre.id} value={genre.id}>{genre.name}</option>
-                                ))}
-                            </select>
-                        </label>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="devSelect">
-                            <select
-                                className="form-select"
-                                id="devSelect"
-                                value={devId}
-                                onChange={(e) => setDevId(e.target.value)}>
-                                <option value="">No developer selected</option>
-                                {devs.map((dev) => (
-                                    <option key={dev.id} value={dev.id}>{dev.name}</option>
-                                ))}
-                            </select>
-                        </label>
-                    </div>
-                    <button type="submit" className="btn filter-btn">
-                        Filter
-                    </button>
-                </form>
+                <div className="container">
+                    <form onSubmit={handleSubmit} className="my-3 d-flex gap-3 align-items-end justify-content-center">
+                        <button className="btn reset-btn" onClick={handleReset}>Reset Filters</button>
+                        <div className="form-group text-center">
+                            <label htmlFor="genreSelect">
+                                <select
+                                    className="form-select"
+                                    id="genreSelect"
+                                    value={genreId}
+                                    onChange={(e) => setGenreId(e.target.value)}>
+                                    <option value="">No genre selected</option>
+                                    {genres.map((genre) => (
+                                        <option key={genre.id} value={genre.id}>{genre.name}</option>
+                                    ))}
+                                </select>
+                            </label>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="devSelect">
+                                <select
+                                    className="form-select"
+                                    id="devSelect"
+                                    value={devId}
+                                    onChange={(e) => setDevId(e.target.value)}>
+                                    <option value="">No developer selected</option>
+                                    {devs.map((dev) => (
+                                        <option key={dev.id} value={dev.id}>{dev.name}</option>
+                                    ))}
+                                </select>
+                            </label>
+                        </div>
+                        <button type="submit" className="btn filter-btn">
+                            Filter
+                        </button>
+                    </form>
+
+                </div>
 
             </main>
         </>
