@@ -30,7 +30,8 @@ export default function SingleGame() {
                     fetch(`${API_URL}/filters?genreId=${data.genre.id}`)
                         .then(res => res.json())
                         .then(data => {
-                            setSameGenreGames(data.content || [])
+                            const filtered = (data.content || []).filter(g => g.id !== Number(id));
+                            setSameGenreGames(filtered);
                         })
                         .catch(err => console.error(err, "Genre fetch error"))
                 }
@@ -38,8 +39,8 @@ export default function SingleGame() {
                     fetch(`${API_URL}/filters?devId=${data.dev.id}`)
                         .then(res => res.json())
                         .then(data => {
-
-                            setSameDevGames(data.content || []);
+                            const filtered = (data.content || []).filter(g => g.id !== Number(id));
+                            setSameDevGames(filtered);
 
                         })
                         .catch(err => console.error(err, "Dev fetch error"))
@@ -66,7 +67,10 @@ export default function SingleGame() {
                             <GameCard className="" game={game} />
 
                         </div>
-                        <Link className="btn-link" to="/games"><button className="btn my-2">Back to the list</button></Link>
+                        <div className="container d-flex justify-content-center">
+                            <Link className="btn-link" to="/games"><button className="btn my-2">Back to the list</button></Link>
+
+                        </div>
 
                         <h2 className="mt-5">Other about this genre</h2>
                         {sameGenreGames.length > 0 ? (
