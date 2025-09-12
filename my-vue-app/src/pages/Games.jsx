@@ -4,7 +4,7 @@ import FilterGames from "./FilterGames";
 import GameCard from "../components/GameCard";
 
 export default function Games() {
-    const { searchTitle, page, setPage } = useContext(SearchContext);
+    const { searchTitle, setSearchTitle, page, setPage } = useContext(SearchContext);
     const [games, setGames] = useState([]);
     const [error, setError] = useState("");
     const [totalPages, setTotalPages] = useState(0);
@@ -12,6 +12,8 @@ export default function Games() {
     const API_URL = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
+
+
         let url = searchTitle
             ? `${API_URL}/searchByName?title=${encodeURIComponent(searchTitle)}&page=${page}&size=6`
             : `${API_URL}/filters?page=${page}&size=6`;
@@ -38,7 +40,7 @@ export default function Games() {
             <main className="flex-grow-1 container">
                 <div className="text-center my-4">
                     <h1>Lista dei giochi</h1>
-                    <FilterGames setGames={setGames} setError={setError} />
+                    <FilterGames setGames={setGames} setExternalError={setError} setTotalPages={setTotalPages} setPage={setPage} />
 
                     {error ? (
                         <div className="text-center mt-5">
@@ -60,23 +62,25 @@ export default function Games() {
                                 ))}
                             </div>
 
-                            <div className="d-flex justify-content-center my-3 gap-3">
-                                <button
-                                    className="btn"
-                                    onClick={() => setPage(prev => (prev === 0 ? totalPages - 1 : prev - 1))}
-                                >
-                                    &laquo; Prev
-                                </button>
+                            {games.length > 0 && totalPages > 1 && (
+                                <div className="d-flex justify-content-center my-3 gap-3">
+                                    <button
+                                        className="btn"
+                                        onClick={() => setPage(prev => (prev === 0 ? totalPages - 1 : prev - 1))}
+                                    >
+                                        &laquo; Prev
+                                    </button>
 
-                                <span className="align-self-center">Pagina {page + 1} di {totalPages}</span>
+                                    <span className="align-self-center">Pagina {page + 1} di {totalPages}</span>
 
-                                <button
-                                    className="btn"
-                                    onClick={() => setPage(prev => (prev === totalPages - 1 ? 0 : prev + 1))}
-                                >
-                                    Next &raquo;
-                                </button>
-                            </div>
+                                    <button
+                                        className="btn"
+                                        onClick={() => setPage(prev => (prev === totalPages - 1 ? 0 : prev + 1))}
+                                    >
+                                        Next &raquo;
+                                    </button>
+                                </div>
+                            )}
                         </>
                     )}
                 </div>

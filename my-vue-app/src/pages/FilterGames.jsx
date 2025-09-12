@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react"
 
-export default function FilterGames({ games, setGames }) {
+
+export default function FilterGames({ setGames, setTotalPages, setPage, setExternalError }) {
     const [genreId, setGenreId] = useState("");
     const [devId, setDevId] = useState("");
     const [genres, setGenres] = useState([]);
     const [devs, setDevs] = useState([]);
-    const [error, setError] = useState("");
 
     useEffect(() => {
         fetch("http://localhost:8080/api/genre")
@@ -28,7 +28,7 @@ export default function FilterGames({ games, setGames }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setError("");
+        setExternalError("");
         setGenreId("")
         setDevId("")
 
@@ -39,17 +39,27 @@ export default function FilterGames({ games, setGames }) {
         query.push("page=0&size=6");
         const queryString = query.length > 0 ? "?" + query.join("&") : "";
 
+        setExternalError("")
+
         fetch(`http://localhost:8080/api/games/filters${queryString}`)
             .then(res => res.json())
             .then(data => {
                 if (!data.content || data.content.length === 0) {
                     setGames([]);
-                    setError("No game with these filters")
+                    setTotalPages(0)
+                    setExternalError("No game with these filters")
                 } else {
                     setGames(data.content);
+                    setTotalPages(data.totalPages || 1)
+                    setPage(0)
                 }
             })
-            .catch(err => console.error(err));
+            .catch(err => {
+                console.error(err)
+                setGames([])
+                setTotalPages(0)
+                setExternalError("Filter Error")
+            });
     };
 
 
@@ -92,7 +102,6 @@ export default function FilterGames({ games, setGames }) {
                         </button>
                     </form>
                 </div>
-
             </main>
         </>
     )
