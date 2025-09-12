@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-export default function FilterGames({ setGames }) {
+export default function FilterGames({ games, setGames }) {
     const [genreId, setGenreId] = useState("");
     const [devId, setDevId] = useState("");
     const [genres, setGenres] = useState([]);
@@ -29,6 +29,9 @@ export default function FilterGames({ setGames }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         setError("");
+        setGenreId("")
+        setDevId("")
+
         let query = [];
         if (genreId) query.push(`genreId=${genreId}`)
         if (devId) query.push(`devId=${devId}`)

@@ -335,6 +335,18 @@ select#devSelect:focus {
 /* End carousel */
 
 /* Buttons */
+
+.btn-error-container {
+  display: flex;
+  justify-content: center;
+
+  .btn-error {
+    max-width: fit-content;
+
+  }
+
+}
+
 .filter-btn {
   min-width: 120px;
   position: relative;

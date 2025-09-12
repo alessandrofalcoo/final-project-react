@@ -40,10 +40,16 @@ export default function Games() {
                     <h1>Lista dei giochi</h1>
                     <FilterGames setGames={setGames} setError={setError} />
 
-                    {games.length === 0 ? (
+                    {error ? (
                         <div className="text-center mt-5">
-                            <h2>{error || "No game found with these filters"}</h2>
+                            <h2>{error || "No game found"}</h2>
+                            <div className="btn-error-container">
+                                <a className="btn btn-error" href="/games">Back to the list</a>
+
+                            </div>
                         </div>
+
+
                     ) : (
                         <>
                             <div className="grid-cards">
