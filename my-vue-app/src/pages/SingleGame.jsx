@@ -11,14 +11,21 @@ export default function SingleGame() {
     const [error, setError] = useState(null);
     const [sameGenreGames, setSameGenreGames] = useState([])
     const [sameDevGames, setSameDevGames] = useState([])
+    const [loadingGenre, setLoadingGenre] = useState(true);
+    const [loadingDev, setLoadingDev] = useState(true);
+
 
     const API_URL = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
+        setLoading(true);
+        setLoadingGenre(true);
+        setLoadingDev(true);
+
         fetch(`${API_URL}/${id}`)
             .then((res) => {
                 if (!res.ok) {
-                    throw new Error("Errore nella risposta dal server")
+                    throw new Error("Errore nella risposta dal server");
                 }
                 return res.json();
             })
@@ -28,32 +35,51 @@ export default function SingleGame() {
 
                 if (data.genre?.id) {
                     fetch(`${API_URL}/filters?genreId=${data.genre.id}`)
-                        .then(res => res.json())
-                        .then(data => {
-                            // Controllo per non mostrare il gioco corrente nei caroselli
-                            const filtered = (data.content || []).filter(g => g.id !== Number(id));
+                        .then((res) => res.json())
+                        .then((genreData) => {
+                            const filtered = (genreData.content || []).filter(
+                                (g) => g.id !== Number(id)
+                            );
                             setSameGenreGames(filtered);
+                            setLoadingGenre(false);
                         })
-                        .catch(err => console.error(err, "Genre fetch error"))
+                        .catch((err) => {
+                            console.error("Genre fetch error", err);
+                            setLoadingGenre(false);
+                        });
+                } else {
+                    setLoadingGenre(false);
                 }
+
+
                 if (data.dev?.id) {
                     fetch(`${API_URL}/filters?devId=${data.dev.id}`)
-                        .then(res => res.json())
-                        .then(data => {
-                            // Controllo per non mostrare il gioco corrente nei caroselli
-                            const filtered = (data.content || []).filter(g => g.id !== Number(id));
+                        .then((res) => res.json())
+                        .then((devData) => {
+                            const filtered = (devData.content || []).filter(
+                                (g) => g.id !== Number(id)
+                            );
                             setSameDevGames(filtered);
-
+                            setLoadingDev(false);
                         })
-                        .catch(err => console.error(err, "Dev fetch error"))
+                        .catch((err) => {
+                            console.error("Dev fetch error", err);
+                            setLoadingDev(false);
+                        });
+                } else {
+                    setLoadingDev(false);
                 }
             })
             .catch((err) => {
                 console.error("Errore nel fetch: ", err);
                 setError(err.message);
                 setLoading(false);
-            })
-    }, [id, API_URL])
+                setLoadingGenre(false);
+                setLoadingDev(false);
+            });
+    }, [id]);
+
+
 
     if (loading) return <p>Caricamento...</p>;
     if (error) return <p>Errore: {error}</p>;
@@ -65,7 +91,7 @@ export default function SingleGame() {
                 <main className="flex-grow-1">
                     <div className="container">
                         <div className="">
-                            <h1 className="text-center">{game.title}</h1>
+                            <h1 className="text-center mt-3">{game.title}</h1>
                             <GameCard className="" game={game} />
                         </div>
                         <div className="container d-flex justify-content-center">
@@ -73,18 +99,24 @@ export default function SingleGame() {
                         </div>
 
                         <h2 className="mt-5">Other about this genre</h2>
-                        {sameGenreGames.length > 0 ? (
+                        {loadingGenre ? (
+                            <p>Loading content...</p>
+                        ) : sameGenreGames.length > 0 ? (
                             <Carousel games={sameGenreGames} carouselId="carousel-genre" />
                         ) : (
                             <p>No other games found in this genre.</p>
+
                         )}
 
                         <h2 className="mt-5">Other about this dev</h2>
-                        {sameDevGames.length > 0 ? (
+                        {loadingDev ? (
+                            <p>Loading content...</p>
+                        ) : sameDevGames.length > 0 ? (
 
                             <Carousel games={sameDevGames} carouselId="carousel-dev" />
                         ) : (
                             <p>No other games found in this dev.</p>
+
                         )}
                     </div>
                 </main>

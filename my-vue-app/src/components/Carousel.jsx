@@ -5,7 +5,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 export default function Carousel({ games, carouselId }) {
     return (
         <div id={carouselId} className="carousel slide" data-bs-ride="carousel">
-            <div className="carousel-indicators">
+            <div className="carousel-indicators genres-carousel">
                 {games.map((_, index) => (
                     <button
                         key={index}
@@ -19,7 +19,7 @@ export default function Carousel({ games, carouselId }) {
                 ))}
             </div>
 
-            <div className="carousel-inner">
+            <div className="carousel-inner devs-carousel">
                 {games.map((game, index) => (
                     <div
                         key={game.id}
