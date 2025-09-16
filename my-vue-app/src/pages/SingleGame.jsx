@@ -37,6 +37,7 @@ export default function SingleGame() {
                     fetch(`${API_URL}/filters?genreId=${data.genre.id}`)
                         .then((res) => res.json())
                         .then((genreData) => {
+                            // Controllo per non avere il gioco corrente nel carosello
                             const filtered = (genreData.content || []).filter(
                                 (g) => g.id !== Number(id)
                             );
@@ -56,6 +57,7 @@ export default function SingleGame() {
                     fetch(`${API_URL}/filters?devId=${data.dev.id}`)
                         .then((res) => res.json())
                         .then((devData) => {
+                            // Controllo per non avere il gioco corrente nel carosello
                             const filtered = (devData.content || []).filter(
                                 (g) => g.id !== Number(id)
                             );
