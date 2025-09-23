@@ -68,7 +68,7 @@ export default function FilterGames({ setGames, setTotalPages, setPage, setExter
             <main className="container page-container">
                 <div className="container">
                     <form onSubmit={handleSubmit} className="my-3 d-flex gap-3 align-items-end justify-content-center">
-                        <button className="btn reset-btn" onClick={handleReset}>Reset Filters</button>
+                        <button className="btn reset-btn" onClick={handleReset} >Reset Filters</button>
                         <div className="form-group text-center">
                             <label htmlFor="genreSelect">
                                 <select

@@ -33,6 +33,9 @@ body * {
   z-index: 1;
 }
 
+.btn-link {
+  text-decoration: none;
+}
 
 img {
   max-width: 150px;
@@ -194,9 +197,6 @@ select#devSelect:focus {
 
 /* End select */
 
-.btn-link {
-  text-decoration: none;
-}
 
 /* Game card */
 .game-card {
