@@ -203,6 +203,7 @@ select#devSelect:focus {
   width: 400px;
   border-radius: 0.75rem;
   overflow: hidden;
+  color: #d4af37;
   background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
   backdrop-filter: blur(6px);
   border: 1px solid #3c3c3c;
@@ -244,7 +245,6 @@ select#devSelect:focus {
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 10px;
-  color: #d4af37;
   text-shadow: 0 0 4px rgba(212, 175, 55, 0.3);
   height: 2.5em;
   line-height: 1.25em;
@@ -351,6 +351,11 @@ select#devSelect:focus {
   min-width: 120px;
   position: relative;
   bottom: 1rem;
+}
+
+.btn-back {
+  display: flex;
+  justify-content: center;
 }
 
 .reset-btn {

@@ -1,7 +1,10 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
+import { SearchContext } from "../contexts/GlobalContext";
 
 
-export default function FilterGames({ setGames, setTotalPages, setPage, setExternalError }) {
+
+export default function FilterGames() {
+    const { setPage, size, setGames, setTotalPages } = useContext(SearchContext);
     const [genreId, setGenreId] = useState("");
     const [devId, setDevId] = useState("");
     const [genres, setGenres] = useState([]);
@@ -28,7 +31,7 @@ export default function FilterGames({ setGames, setTotalPages, setPage, setExter
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setExternalError("");
+        setError("");
         setGenreId("")
         setDevId("")
 
@@ -36,10 +39,8 @@ export default function FilterGames({ setGames, setTotalPages, setPage, setExter
         if (genreId) query.push(`genreId=${genreId}`)
         if (devId) query.push(`devId=${devId}`)
         if (genreId && devId) query.push(`genreId=${genreId}&devId=${devId}`);
-        query.push("page=0&size=6");
+        query.push(`page=0&size=${size}`);
         const queryString = query.length > 0 ? "?" + query.join("&") : "";
-
-        setExternalError("")
 
         fetch(`http://localhost:8080/api/games/filters${queryString}`)
             .then(res => res.json())
@@ -47,7 +48,7 @@ export default function FilterGames({ setGames, setTotalPages, setPage, setExter
                 if (!data.content || data.content.length === 0) {
                     setGames([]);
                     setTotalPages(0)
-                    setExternalError("No game with these filters")
+                    setError("No game with these filters")
                 } else {
                     setGames(data.content);
                     setTotalPages(data.totalPages || 1)
@@ -58,7 +59,7 @@ export default function FilterGames({ setGames, setTotalPages, setPage, setExter
                 console.error(err)
                 setGames([])
                 setTotalPages(0)
-                setExternalError("Filter Error")
+                setError("Filter Error")
             });
     };
 

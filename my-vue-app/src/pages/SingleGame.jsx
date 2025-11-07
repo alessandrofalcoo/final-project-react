@@ -59,7 +59,7 @@ export default function SingleGame() {
                         .then((devData) => {
                             // Controllo per non avere il gioco corrente nel carosello
                             const filtered = (devData.content || []).filter(
-                                (g) => g.id !== Number(id)
+                                (d) => d.id !== Number(id)
                             );
                             setSameDevGames(filtered);
                             setLoadingDev(false);
