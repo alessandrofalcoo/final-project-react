@@ -4,7 +4,7 @@ import { SearchContext } from "../contexts/GlobalContext";
 
 
 export default function FilterGames() {
-    const { setPage, size, setGames, setTotalPages } = useContext(SearchContext);
+    const { setPage, size, setGames, setTotalPages, setError } = useContext(SearchContext);
     const [genreId, setGenreId] = useState("");
     const [devId, setDevId] = useState("");
     const [genres, setGenres] = useState([]);
