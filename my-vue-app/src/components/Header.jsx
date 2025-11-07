@@ -8,7 +8,6 @@ export default function Header() {
         e.preventDefault();
         setPage(0);
         setSearchTitle(query);
-        setQuery("");
     };
 
     return (
