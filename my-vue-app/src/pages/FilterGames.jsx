@@ -10,6 +10,9 @@ export default function FilterGames() {
     const [genres, setGenres] = useState([]);
     const [devs, setDevs] = useState([]);
 
+    const API_URL = import.meta.env.VITE_API_URL;
+
+
     useEffect(() => {
         fetch("http://localhost:8080/api/genre")
             .then(res => res.json())
@@ -39,7 +42,7 @@ export default function FilterGames() {
         query.push(`page=0&size=${size}`);
         const queryString = query.length > 0 ? "?" + query.join("&") : "";
 
-        fetch(`http://localhost:8080/api/games/filters${queryString}`)
+        fetch(`${API_URL}/filters${queryString}`)
             .then(res => res.json())
             .then(data => {
                 if (!data.content || data.content.length === 0) {

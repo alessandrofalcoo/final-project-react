@@ -22,7 +22,7 @@ export default function Games() {
     useEffect(() => {
         let url = searchTitle
             ? `${API_URL}/searchByName?title=${encodeURIComponent(searchTitle)}&page=${page}&size=${size}`
-            : `${API_URL}/filters?page=${page}&${size}`;
+            : `${API_URL}?page=${page}&${size}`;
 
         fetch(url)
             .then((res) => {
