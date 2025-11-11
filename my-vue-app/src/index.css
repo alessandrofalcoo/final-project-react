@@ -8,7 +8,14 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+  margin: 0;
+}
+
 body {
+  display: flex;
+  flex-direction: column;
   position: relative;
   background-image: url('https://images6.alphacoders.com/135/1352928.png');
   background-position: center;
@@ -129,11 +136,8 @@ img {
 /* End home */
 
 /* Main */
-main.flex-grow-1 {
+main {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .grid-cards {

@@ -1,8 +1,6 @@
 import { useState, useEffect, useContext } from "react"
 import { SearchContext } from "../contexts/GlobalContext";
 
-
-
 export default function FilterGames() {
     const { setPage, size, setGames, setTotalPages, setError } = useContext(SearchContext);
     const [genreId, setGenreId] = useState("");
